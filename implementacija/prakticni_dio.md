@@ -35,25 +35,32 @@ Za potrebe analize korišteni su terminalski ispisi s Kali Linux sustava te log 
 ## Analiza testa System Information Discovery (T1082)
 Test System Information Discovery (T1082) izvršen je korištenjem Atomic Red Team alata na ciljnom Linux sustavu. Kao što je prikazano na Slici 1, test je uspješno dohvatilo detaljne informacije o operacijskom sustavu, uključujući naziv distribucije, verziju kernela, arhitekturu sustava i osnovne sistemske parametre.
  
-<img width="945" height="591" alt="image" src="https://github.com/user-attachments/assets/6ff56511-5b57-4247-a115-cd19e68949b8" />
-<p><em>Slika 1: Izlaz Atomic Red Team testa T1082 – System Information Discovery</em></p>
+![Izlaz Atomic Red Team testa T1082 – System Information Discovery](../rezultati/slike_zaslona/T1082_system_info.png)
+
+*Slika 1: Izlaz Atomic Red Team testa T1082 – System Information Discovery*
+
 Dobiveni rezultati ukazuju na to da napadač može bez prepreka prikupiti ključne informacije o sustavu. Takve informacije predstavljaju temelj za daljnje faze napada jer omogućuju prilagodbu napadačkih alata i tehnika specifičnom okruženju. Tijekom izvođenja testa nije zabilježena aktivna blokada niti upozorenje na razini sustava, što upućuje na nedostatak lokalnih mehanizama za detekciju ove vrste aktivnosti.
 
 ## Analiza testa File and Directory Discovery (T1083)
 Test File and Directory Discovery (T1083) korišten je za pregled strukture datotečnog sustava. Na Slici 2 vidljiv je ispis direktorija i datoteka dobiven izvršavanjem Atomic Red Team testa, čime je simuliran pokušaj pronalaska potencijalno osjetljivih podataka.
  
-<img width="945" height="591" alt="image" src="https://github.com/user-attachments/assets/d7c65a17-bd6e-4465-b266-9b155d350241" />
-<p><em>Slika 2 Izlaz Atomic Red Team testa T1083 – File and Directory Discovery</em></p>
+![Izlaz Atomic Red Team testa T1083 – File and Directory Discovery](../rezultati/slike_zaslona/T1083_system_info.png)
+
+*Slika 2: Izlaz Atomic Red Team testa T1083 – File and Directory Discovery*
+
 Rezultati testa pokazuju da ciljni sustav omogućuje širok uvid u strukturu datotečnog sustava bez dodatnih ograničenja. Iz perspektive napadača, ovakva razina pristupa omogućuje jednostavno lociranje konfiguracijskih datoteka, korisničkih direktorija ili drugih resursa koji mogu sadržavati osjetljive informacije. S obrambenog aspekta, nepostojanje detekcije ovakve aktivnosti predstavlja potencijalni sigurnosni nedostatak.
 
 ## Analiza Network Service Discovery i mrežnog skeniranja
 Network Service Discovery testovi dopunjeni su ručnim mrežnim skeniranjem pomoću alata nmap. Na Slikama 3 i 4 prikazani su rezultati skeniranja interne mreže, uključujući identificirane aktivne hostove i dostupne mrežne servise.
 
-<img width="605" height="454" alt="image" src="https://github.com/user-attachments/assets/b994085a-d31f-4c35-a958-b5817b3bf6bf" />
-<p><em> Slika 3 Nmap skeniranje mreže – otkrivanje aktivnih hostova </em></p>
+![Nmap skeniranje mreže – otkrivanje aktivnih hostova](../rezultati/slike_zaslona/nmap_hostovi.png)
 
-<img width="945" height="709" alt="image" src="https://github.com/user-attachments/assets/f4aa0545-0703-49db-b603-945fa2763f1b" />
-<p><em> Slika 4 Nmap skeniranje – identificirani mrežni servisi </em></p>
+*Slika 3: Nmap skeniranje mreže – otkrivanje aktivnih hostova*
+
+![Nmap skeniranje – identificirani mrežni servisi](../rezultati/slike_zaslona/nmap_servisi.png)
+
+*Slika 4: Nmap skeniranje – identificirani mrežni servisi*
+
 Rezultati skeniranja pokazuju da su pojedini servisi dostupni unutar mreže, što napadaču omogućuje mapiranje mrežne topologije i identifikaciju potencijalnih ciljeva. Iako nisu svi portovi dostupni, sama mogućnost izvođenja skeniranja bez aktivne detekcije ukazuje na ograničenu vidljivost mrežnih aktivnosti unutar postojećeg sigurnosnog okruženja.
 
 ## Analiza Account Discovery i pokušaja pristupa
@@ -61,20 +68,23 @@ Tijekom faze otkrivanja korisničkih računa zabilježeni su pokušaji uspostave
  
 ## Neuspjeli pokušaji SSH povezivanja prema ciljnim sustavima
 
-<img width="605" height="454" alt="image" src="https://github.com/user-attachments/assets/259a9fce-a2bc-4da3-8e35-e12d1507aa9d" />
-<p><em> Slika 5 Neuspjeli pokušaji SSH povezivanja prema ciljnim sustavima </em></p>
+![Neuspjeli pokušaji SSH povezivanja prema ciljnim sustavima](../rezultati/slike_zaslona/neuspjelo_ssh_povezivanje.png)
+
+*Slika 5: Neuspjeli pokušaji SSH povezivanja prema ciljnim sustavima*
+
 Iako su pokušaji izravnog pristupa odbijeni, sama činjenica da napadač može testirati dostupnost servisa i korisničkih imena predstavlja potencijalnu prijetnju. Informacije prikupljene u ovoj fazi mogu se iskoristiti u kasnijim napadima, primjerice za brute-force napade ili ciljani socijalni inženjering.
 
 ## Analiza firewall logova (OPNsense)
 Analiza zapisa vatrozida OPNsense prikazana je na Slikama 6 i 7. Log zapisi jasno prikazuju velik broj blokiranih pokušaja komunikacije između mrežnih segmenata, uključujući DNS, TCP i UDP promet.
 
-<img width="945" height="591" alt="image" src="https://github.com/user-attachments/assets/26970553-d1da-45a5-b832-f68e57dacce3" />
- 
-<p><em> Slika 6 OPNsense firewall – blokirani mrežni promet (Live View) </em></p>
+![OPNsense firewall – blokirani mrežni promet (Live View)](../rezultati/slike_zaslona/firewall_live_view.jpg)
 
-<img width="945" height="591" alt="image" src="https://github.com/user-attachments/assets/61a6795b-89c1-4464-bd37-e72adb14ce47" />
- 
-<p><em> Slika 7 Detaljni zapisi OPNsense vatrozida tijekom simuliranih napada </em></p>
+*Slika 6: OPNsense firewall – blokirani mrežni promet (Live View)*
+
+![Detaljni zapisi OPNsense vatrozida tijekom simuliranih napada](../rezultati/slike_zaslona/firewall_logovi.jpg)
+
+*Slika 7: Detaljni zapisi OPNsense vatrozida tijekom simuliranih napada*
+
 Ovi zapisi potvrđuju da vatrozid učinkovito primjenjuje zadana pravila i sprječava neovlaštenu komunikaciju. Međutim, analiza također pokazuje da vatrozid funkcionira isključivo na razini mrežnih pravila, bez dublje korelacije događaja ili analize ponašanja, što ograničava mogućnost ranog prepoznavanja napadačkih obrazaca.
 
 # Zaključak 
