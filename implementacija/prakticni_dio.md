@@ -44,7 +44,7 @@ Dobiveni rezultati ukazuju na to da napadač može bez prepreka prikupiti ključ
 ## Analiza testa File and Directory Discovery (T1083)
 Test File and Directory Discovery (T1083) korišten je za pregled strukture datotečnog sustava. Na Slici 2 vidljiv je ispis direktorija i datoteka dobiven izvršavanjem Atomic Red Team testa, čime je simuliran pokušaj pronalaska potencijalno osjetljivih podataka.
  
-![Izlaz Atomic Red Team testa T1083 – File and Directory Discovery](../rezultati/slike_zaslona/T1083_system_info.png)
+![Izlaz Atomic Red Team testa T1083 – File and Directory Discovery](../rezultati/slike_zaslona/T1083_file_directory.png)
 
 *Slika 2: Izlaz Atomic Red Team testa T1083 – File and Directory Discovery*
 
@@ -55,7 +55,8 @@ Network Service Discovery testovi dopunjeni su ručnim mrežnim skeniranjem pomo
 
 ![Nmap skeniranje mreže – otkrivanje aktivnih hostova](../rezultati/slike_zaslona/nmap_hostovi.png)
 
-*Slika 3: Nmap skeniranje mreže – otkrivanje aktivnih hostova*
+*Slika 3: Nmap skeniranje mreže – otkrivanje aktivnih hostova*  
+<br>
 
 ![Nmap skeniranje – identificirani mrežni servisi](../rezultati/slike_zaslona/nmap_servisi.png)
 
@@ -77,11 +78,11 @@ Iako su pokušaji izravnog pristupa odbijeni, sama činjenica da napadač može 
 ## Analiza firewall logova (OPNsense)
 Analiza zapisa vatrozida OPNsense prikazana je na Slikama 6 i 7. Log zapisi jasno prikazuju velik broj blokiranih pokušaja komunikacije između mrežnih segmenata, uključujući DNS, TCP i UDP promet.
 
-![OPNsense firewall – blokirani mrežni promet (Live View)](../rezultati/slike_zaslona/firewall_live_view.jpg)
+![OPNsense firewall – blokirani mrežni promet (Live View)](../rezultati/slike_zaslona/opnsense_live_view.jpg)
 
 *Slika 6: OPNsense firewall – blokirani mrežni promet (Live View)*
 
-![Detaljni zapisi OPNsense vatrozida tijekom simuliranih napada](../rezultati/slike_zaslona/firewall_logovi.jpg)
+![Detaljni zapisi OPNsense vatrozida tijekom simuliranih napada](../rezultati/slike_zaslona/opnsense_logovi.jpg)
 
 *Slika 7: Detaljni zapisi OPNsense vatrozida tijekom simuliranih napada*
 
